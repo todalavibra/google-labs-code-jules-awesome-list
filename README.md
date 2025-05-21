@@ -51,6 +51,9 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
+- `// Find all instances of a deprecated function and suggest replacements`
+  <sub>Useful for code modernization.</sub>
+
 
 
 ## Debugging
@@ -76,6 +79,9 @@
 - `// Add print statements to trace the execution flow of this Python script...`
   <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
 
+- `// Generate a sequence diagram based on the execution of this code`
+  <sub>Helps visualize interactions in complex systems.</sub>
+
 
 ## Documentation
 
@@ -90,6 +96,12 @@
 
 - `// Generate Sphinx-style docstrings for this Python module/class/function...`
   <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
+
+- `// Generate a class diagram from this code`
+  <sub>Useful for understanding code structure in various languages like Java, Python, C++.</sub>
+
+- `// Generate documentation from code comments using...`
+  <sub>Automate documentation generation.</sub>
 
 
 
@@ -115,6 +127,15 @@
 
 - `// Write a Pytest fixture to mock this external API call...`
   <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
+
+- `// Generate test cases based on code coverage reports`
+  <sub>Improve test coverage.</sub>
+
+- `// Write a performance test for this API endpoint`
+  <sub>Measure and improve API performance.</sub>
+
+- `// Add fuzz testing to this function.`
+  <sub>Discover edge cases and security vulnerabilities.</sub>
 
 
 
