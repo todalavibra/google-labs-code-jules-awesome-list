@@ -88,8 +88,14 @@
 - `// Write API docs for this endpoint`
   <sub>REST or GraphQL backends.</sub>
 
-- `// Generate Sphinx-style docstrings for this Python module/class/function...`
+- `// Generate Sphinx-style docstrings for this Python module/class/function…`
   <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
+
+- `// Translate README.md into Spanish, French, and Simplified Chinese; save as README.es.md, README.fr.md, README.zh-CN.md`
+  <sub>One-shot localization for the three most requested languages.</sub>
+
+- `// Translate README.md into {language}; save as README.{lang}.md`
+  <sub>Ad-hoc localization—replace {language}/{lang} with any target language code.</sub>
 
 
 
