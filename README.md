@@ -94,7 +94,7 @@
 - `// Write a project README with installation, usage examples, and tech stack details`
   <sub>Generates a clean README.</sub>
 
-- `Analyze this API and generate a Swagger documentation`
+- `Analyze this API and generate a Swagger (Open API) documentation`
   <sub>Creates Swagger docs.</sub>
 
 
