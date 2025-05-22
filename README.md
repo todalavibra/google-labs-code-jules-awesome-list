@@ -217,3 +217,31 @@ Your contributions are welcome! Add new prompts, fix formatting, or suggest cate
 
 - 📄 [Contributing Guide](contributing.md)
 - 🪄 Open a [Pull Request](https://github.com/YOUR_REPO/pulls)
+
+---
+
+## Simple Video Listing App
+
+This is a simple Flask application to list and play videos.
+
+**Prerequisites**:
+*   Python 3.x
+*   Flask (install via pip: `pip install Flask`)
+
+**Running the Application**:
+1.  Navigate to the root directory of the project in your terminal.
+2.  Ensure you are in the directory containing the `app` folder.
+3.  Run the command: `python app/main.py`
+4.  Open your web browser and go to `http://127.0.0.1:5000/`
+
+**Project Structure**:
+*   `app/main.py`: The main Flask application file containing the routes and logic.
+*   `app/static/`: Contains static assets.
+    *   `style.css`: Basic CSS for styling the application.
+    *   `videos/`: Contains placeholder video files.
+*   `app/templates/`: Contains HTML templates.
+    *   `index.html`: Lists available videos.
+    *   `player.html`: Displays the video player for a selected video.
+
+**Note on Videos**:
+The application currently uses empty placeholder video files in `app/static/videos/` (e.g., `sample_video_1.mp4`, `sample_video_2.mp4`, `sample_video_3.mp4`). To see actual video playback, you must replace these placeholders with real `.mp4` video files. Ensure the filenames of your actual video files match those defined in the `MOCK_VIDEOS` list within `app/main.py`.
