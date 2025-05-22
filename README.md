@@ -20,6 +20,8 @@
 - [Documentation](#documentation)
 - [Testing](#testing)
 - [Package Management](#package-management)
+- [DevOps & CI/CD](#devops--cicd)
+- [Database & Data](#database--data)
 - [AI-Native Tasks](#ai-native-tasks)
 - [Context](#context)
 - [Fun \& Experimental](#fun--experimental)
@@ -134,6 +136,31 @@
 
 - `// Set up Renovate or Dependabot for auto-updates`
   <sub>Best for active projects with CI/CD.</sub>
+
+## DevOps & CI/CD
+
+- `// Create a GitHub Actions workflow (YAML) to run tests and lint on every pull request...`
+  <sub>Automates quality checks across languages.</sub>
+
+- `// Dockerize this service using a multi-stage Dockerfile...`
+  <sub>Production-ready container builds with minimal size.</sub>
+
+- `// Add a CD step that deploys to Cloud Run when main passes...`
+  <sub>Zero-touch deployments for containerized apps.</sub>
+
+- `// Generate a Terraform module to provision this infrastructure...`
+  <sub>Infrastructure as Code for cloud resources.</sub>
+
+## Database & Data
+
+- `// Optimize this SQL query for performance...`
+  <sub>Speeds up heavy data fetches.</sub>
+
+- `// Generate seed data for this Prisma schema...`
+  <sub>Bootstraps development databases.</sub>
+
+- `// Migrate this relational schema to MongoDB collections...`
+  <sub>Platform changes or polyglot persistence.</sub>
 
 
 
