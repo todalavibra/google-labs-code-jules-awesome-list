@@ -91,6 +91,12 @@
 - `// Generate Sphinx-style docstrings for this Python module/class/function...`
   <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
 
+- `// Write a project README with installation, usage examples, and tech stack details`
+  <sub>Generates a clean README.</sub>
+
+- `Analyze this API and generate a Swagger documentation`
+  <sub>Creates Swagger docs.</sub>
+
 
 
 ## Testing
@@ -115,6 +121,9 @@
 
 - `// Write a Pytest fixture to mock this external API call...`
   <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
+
+- `// Write unit tests for this service logic using Jest`
+  <sub>Generates Jest tests for service logic.</sub>
 
 
 
@@ -159,6 +168,9 @@
 
 - `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
   <sub>For optimizing performance in computationally intensive Python applications.</sub>
+
+- `// Analyze this project and suggest next tasks or improvements`
+  <sub>Finds what to build or improve next.</sub>
 
 
 
