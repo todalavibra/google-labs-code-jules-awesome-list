@@ -22,7 +22,7 @@
 - [Package Management](#package-management)
 - [AI-Native Tasks](#ai-native-tasks)
 - [Context](#context)
-- [Fun \& Experimental](#fun--experimental)
+- [Fun & Experimental](#fun--experimental)
 - [Start from Scratch](#start-from-scratch)
 - [Contributing](#contributing)
 
@@ -160,6 +160,11 @@
 - `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
   <sub>For optimizing performance in computationally intensive Python applications.</sub>
 
+- `// Based on this function's logic, suggest 3 distinct and meaningful unit test cases.`
+  <sub>Speeding up test creation by generating relevant scenarios.</sub>
+
+- `// Translate this code snippet from [language_A] to [language_B], maintaining functionality: [paste code snippet].`
+  <sub>Migrating code or understanding logic in an unfamiliar language.</sub>
 
 
 ## Context
@@ -169,6 +174,15 @@
 
 - `// Summarize all changes in the last 7 days`
   <sub>Catching up after time off.</sub>
+
+- `// Who were the last 3 committers to the [specific_file_or_directory]?`
+  <sub>Identifying relevant team members for questions or code reviews. </sub>
+  
+- `// What are the current open issues labeled with [bug/enhancement] related to the [specific_module_or_feature]?`
+  <sub>Getting an overview of ongoing work or problems in a specific project area. </sub>
+  
+- `// Show me the TODO comments in the [directory_path] directory that are older than [1 month].`
+  <sub>Helping to resurface and address forgotten tasks or technical debt. </sub>
 
 
 
@@ -189,6 +203,11 @@
 - `// Turn this tool into a GitHub App`
   <sub>Reusable, platform-integrated tools.</sub>
 
+- `// Suggest a fun and quirky 404 error page message/design for this application.`
+  <sub>Improving user experience even on error pages. </sub>
+
+
+
 ## Start from Scratch
 
 - `// What's going on in this repo?`
@@ -208,6 +227,50 @@
 
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
+
+- `// Set up a basic CI/CD pipeline script using [GitHub Actions/GitLab CI/Jenkinsfile] for a [Node.js/Python] project that includes linting, testing, and building.`
+  <sub >Automating build, test, and deployment processes for new projects. </sub >
+  
+- `// Create a multi-stage Dockerfile for this [Node.js/Python/Go/Java] web application for development and production builds.`
+  <sub >Containerizing applications for consistent environments and optimized images. </sub >
+  
+- `// Initialize a new project with [Next.js/Nuxt.js/SvelteKit/Astro] and include [Tailwind CSS/TypeScript].`
+  <sub >Bootstrapping modern web projects with common configurations. </sub >
+
+
+
+## API Design & Development
+
+- `// Design a REST API endpoint for [uploading a user's profile picture]. Include request (multipart/form-data) and response examples, and consider success/error states.`
+   <sub>Planning and structuring new API functionalities with detailed specifications.</sub>
+    
+- `// Generate an OpenAPI (Swagger) specification v3 for an API with these resources: [Books (GET, POST, PUT, DELETE by ID), Authors (GET, POST by ID)].`
+   <sub>Documenting APIs for discoverability, testing, and client generation.</sub>
+    
+
+
+## Security
+
+- `// How can I scan my project's source code for potential security vulnerabilities using a tool like [SonarQube/Snyk Code/ESLint security plugin]?`
+   <sub>Integrating static analysis security testing (SAST) into the development workflow.</sub>
+
+
+
+## Deployment & Infrastructure (DevOps)
+
+- `// How do I deploy this [Node.js/Python/Docker] application to [AWS Elastic Beanstalk/Google Cloud Run/Azure App Service]?`
+   <sub >Guidance for getting applications live on common cloud platforms. </sub>
+   
+- `// Write a basic Kubernetes deployment YAML for this container image: [image_name] exposing port [port_number].`
+     <sub >For orchestrating containerized applications using Kubernetes. </sub>
+     
+- `// Configure a [GitHub Actions/GitLab CI] workflow to build and push a Docker image to [Docker Hub/Amazon ECR/Google Artifact Registry].`
+     <sub>Automating the container image lifecycle. </sub>
+     
+- `// How do I set up basic monitoring and alerting for this service using [Prometheus with Grafana/Google Cloud Monitoring/Azure Monitor]?`
+     <sub>Ensuring visibility into application health and performance post-deployment. </sub>
+
+
 
 
 
