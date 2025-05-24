@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  iot-backend:
+    build: ./iot-backend
+    container_name: iot-backend-container
+    ports:
+      - "3000:3000" # Host:Container
+    environment:
+      # Example: If API_SECRET_KEY was from an env var
+      # API_SECRET_KEY: ${API_SECRET_KEY_FROM_HOST_ENV}
+      NODE_ENV: development # or production
+    # volumes: # Optional: mount local code for development
+      # - ./iot-backend:/usr/src/app
+      # - /usr/src/app/node_modules # Exclude node_modules from being overwritten
+
+  iot-frontend:
+    build: ./iot-frontend
+    container_name: iot-frontend-container
+    ports:
+      - "8080:80" # Host:Container (e.g., access frontend via localhost:8080)
+    depends_on:
+      - iot-backend # Ensures backend starts before frontend, though app logic should handle backend unavailability
+    # environment: # For build-time args if needed by Vue build
+      # VUE_APP_API_BASE_URL: /api # Example
