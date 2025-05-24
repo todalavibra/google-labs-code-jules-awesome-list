@@ -1,219 +1,97 @@
-<p align="center">
-  <img src="assets/jules-readme.png" alt="Jules Awesome List" width="600">
-</p>
+# IoT Platform - Full Stack Application
 
-<div align="center">
-  <h1>Awesome Jules Prompts 🌟</h1>
-  <p>Curated prompts for Jules, an async coding agent from Google Labs.</p>
-  <br>
-  <a href="https://jules.google.com">Visit Jules</a> •
-  <a href="#contributing">Contribute</a>
-</div>
+This project implements a full-stack IoT (Internet of Things) platform consisting of a Node.js backend, a Vue.js frontend, and containerized using Docker.
 
----
+## Project Overview
 
-## Table of Contents
+The platform allows for:
+- **Device Registration:** New IoT devices can be registered with the backend.
+- **Data Submission:** Registered devices can submit data (e.g., sensor readings) to the backend.
+- **Data Visualization:** The frontend provides an admin interface to view registered devices and their submitted data.
+- **Authentication:** Backend GET endpoints are protected and require a secret key for access.
 
-- [Table of Contents](#table-of-contents)
-- [Everyday Dev Tasks](#everyday-dev-tasks)
-- [Debugging](#debugging)
-- [Documentation](#documentation)
-- [Testing](#testing)
-- [Package Management](#package-management)
-- [AI-Native Tasks](#ai-native-tasks)
-- [Context](#context)
-- [Fun \& Experimental](#fun--experimental)
-- [Start from Scratch](#start-from-scratch)
-- [Contributing](#contributing)
+## Architecture
 
----
+The application is composed of three main parts:
 
-## Everyday Dev Tasks
+1.  **`iot-backend`**:
+    *   A Node.js application built with Express.js.
+    *   Provides RESTful APIs for device management and data handling.
+    *   Uses in-memory storage for devices and their data (for simplicity, not production-ready).
+    *   Implements basic token-based authentication for secure GET endpoints.
+    *   Containerized with Docker.
 
-- `// Refactor {a specific} file from {x} to {y}...`
-  <sub>General-purpose, applies to any language or repo.</sub>
+2.  **`iot-frontend`**:
+    *   A Vue.js (v3) application built with TypeScript and Vite.
+    *   Provides an admin interface to interact with the backend.
+    *   Allows users to view registered devices and their data.
+    *   Communicates with the backend via API calls, including the authentication token.
+    *   Containerized with Docker and served by Nginx.
 
-- `// Add a test suite...`
-  <sub>Useful for repos lacking test coverage.</sub>
+3.  **`docker-compose.yml`**:
+    *   Orchestrates the `iot-backend` and `iot-frontend` services.
+    *   Manages networking between the containers.
+    *   Defines ports for accessing the services.
 
-- `// Add type hints to {a specific} Python function...`
-  <sub>Python codebases transitioning to typed code.</sub>
+## Getting Started
 
-- `// Generate mock data for {a specific} schema...`
-  <sub>APIs, frontends, or test-heavy environments.</sub>
+### Prerequisites
 
-- `// Convert these commonJS modules to ES modules...`
-  <sub>JS/TS projects modernizing legacy code.</sub>
+*   Docker Engine and Docker Compose installed.
+*   A modern web browser.
 
-- `// Turn this callback-based code into async/await...`
-  <sub>JavaScript or Python codebases improving async logic.</sub>
+### Running the Application with Docker Compose
 
-- `// Implement a data class for this dictionary structure...`
-  <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
+1.  **Clone the repository (if you haven't already):**
+    ```bash
+    # git clone <repository-url>
+    # cd <repository-directory>
+    ```
 
+2.  **Build and run the services using Docker Compose:**
+    From the project root directory (where `docker-compose.yml` is located):
+    ```bash
+    docker-compose up --build
+    ```
+    The `--build` flag ensures images are rebuilt if Dockerfiles have changed.
 
+3.  **Accessing the services:**
+    *   **Frontend Admin Interface:** Open your web browser and navigate to `http://localhost:8080`.
+    *   **Backend API:** The backend API is accessible on `http://localhost:3000`. The frontend communicates with it via an Nginx proxy configured at `/api` on the frontend service.
 
-## Debugging
+### Default Ports
 
-- `// Help me fix {a specific} error...`
-  <sub>For any repo where you're stuck on a runtime or build error.</sub>
+*   **Frontend (via Nginx):** `localhost:8080` (maps to port 80 inside the frontend container)
+*   **Backend API:** `localhost:3000` (maps to port 3000 inside the backend container)
 
-- `// Why is {this specific snippet of code} slow?`
-  <sub>Performance profiling for loops, functions, or queries.</sub>
+## Development
 
-- `// Trace why this value is undefined...`
-  <sub>Frontend and backend JS/TS bugs.</sub>
+Refer to the README files within the `iot-backend` and `iot-frontend` directories for specific development and testing instructions for each part of the application.
 
-- `// Diagnose this memory leak...`
-  <sub>Server-side apps or long-running processes.</sub>
+*   `iot-backend/README.md`
+*   `iot-frontend/README.md`
 
-- `// Add logging to help debug this issue...`
-  <sub>Useful when troubleshooting silent failures.</sub>
+## Authentication
 
-- `// Find race conditions in this async code`
-  <sub>Concurrent systems in JS, Python, Go, etc.</sub>
+The backend API uses a simple secret key for authentication on `GET` requests to `/devices` and `/data/:deviceId`. The key is hardcoded as `YOUR_VERY_SECRET_KEY_123` in both the backend (`index.js`) and the frontend (`src/services/api.ts`). This is for demonstration purposes; in a real application, use a more secure authentication mechanism and manage secrets properly.
 
-- `// Add print statements to trace the execution flow of this Python script...`
-  <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
+The frontend sends this key as a Bearer token in the `Authorization` header.
 
+## Stopping the Application
 
-## Documentation
+To stop the services running via Docker Compose, press `Ctrl+C` in the terminal where `docker-compose up` is running.
+To remove the containers, run:
+```bash
+docker-compose down
+```
 
-- `// Write a README for this project`
-  <sub>Any repo lacking a basic project overview.</sub>
+## Further Improvements (Beyond Scope of this Project)
 
-- `// Add comments to this code`
-  <sub>Improves maintainability of complex logic.</sub>
-
-- `// Write API docs for this endpoint`
-  <sub>REST or GraphQL backends.</sub>
-
-- `// Generate Sphinx-style docstrings for this Python module/class/function...`
-  <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
-
-
-
-## Testing
-
-- `// Add integration tests for this API endpoint`
-  <sub>Express, FastAPI, Django, Flask apps.</sub>
-
-- `// Write a test that mocks fetch`
-  <sub>Browser-side fetch or axios logic.</sub>
-
-- `// Convert this test from Mocha to Jest`
-  <sub>JS test suite migrations.</sub>
-
-- `// Generate property-based tests for this function`
-  <sub>Functional or logic-heavy code.</sub>
-
-- `// Simulate slow network conditions in this test suite`
-  <sub>Web and mobile apps.</sub>
-
-- `// Write a test to ensure backward compatibility for this function`
-  <sub>Library or SDK maintainers.</sub>
-
-- `// Write a Pytest fixture to mock this external API call...`
-  <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
-
-
-
-## Package Management
-
-- `// Upgrade my linter and autofix breaking config changes`
-  <sub>JS/TS repos using ESLint or Prettier.</sub>
-
-- `// Show me the changelog for React 19`
-  <sub>Web frontend apps using React.</sub>
-
-- `// Which dependencies can I safely remove?`
-  <sub>Bloated or legacy codebases.</sub>
-
-- `// Check if these packages are still maintained`
-  <sub>Security-conscious or long-term projects.</sub>
-
-- `// Set up Renovate or Dependabot for auto-updates`
-  <sub>Best for active projects with CI/CD.</sub>
-
-
-
-## AI-Native Tasks
-
-- `// Analyze this repo and generate 3 feature ideas`
-  <sub>Vision-stage or greenfield products.</sub>
-
-- `// Identify tech debt in this file`
-  <sub>Codebases with messy or fragile logic.</sub>
-
-- `// Find duplicate logic across files`
-  <sub>Sprawling repos lacking DRY practices.</sub>
-
-- `// Cluster related functions and suggest refactors`
-  <sub>Projects with lots of utils or helpers.</sub>
-
-- `// Help me scope this issue so Jules can solve it`
-  <sub>For working with Jules on real issues.</sub>
-
-- `// Convert this function into a reusable plugin/module`
-  <sub>Componentizing logic-heavy code.</sub>
-
-- `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
-  <sub>For optimizing performance in computationally intensive Python applications.</sub>
-
-
-
-## Context
-
-- `// Write a status update based on recent commits`
-  <sub>Managerial and async communication.</sub>
-
-- `// Summarize all changes in the last 7 days`
-  <sub>Catching up after time off.</sub>
-
-
-
-## Fun & Experimental
-
-- `// Add a confetti animation when {a specific} action succeeds`
-  <sub>Frontend web apps with user delight moments.</sub>
-
-- `// Inject a developer joke when {a specific} build finishes`
-  <sub>Personal projects or team tools.</sub>
-
-- `// Build a mini CLI game that runs in the terminal`
-  <sub>For learning or community fun.</sub>
-
-- `// Add a dark mode Easter egg to this UI`
-  <sub>Design-heavy frontend projects.</sub>
-
-- `// Turn this tool into a GitHub App`
-  <sub>Reusable, platform-integrated tools.</sub>
-
-## Start from Scratch
-
-- `// What's going on in this repo?`
-  <sub>Great for legacy repos or onboarding onto unfamiliar code.</sub>
-
-- `// Initialize a new Express app with CORS enabled`
-  <sub>Web backend projects using Node.js and Express.</sub>
-
-- `// Set up a monorepo using Turborepo and PNPM`
-  <sub>Multi-package JS/TS projects with shared dependencies.</sub>
-
-- `// Bootstrap a Python project with Poetry and Pytest`
-  <sub>Python repos aiming for clean dependency and test setup.</sub>
-
-- `// Create a starter template for a Chrome extension`
-  <sub>Browser extension development.</sub>
-
-- `// I want to build a web scraper—start me off`
-  <sub>Data scraping or automation tools using Python/Node.</sub>
-
-
-
-## Contributing
-
-Your contributions are welcome! Add new prompts, fix formatting, or suggest categories.
-
-- 📄 [Contributing Guide](contributing.md)
-- 🪄 Open a [Pull Request](https://github.com/YOUR_REPO/pulls)
+*   **Database Integration:** Replace in-memory storage with a persistent database (e.g., PostgreSQL, MongoDB).
+*   **Robust Authentication:** Implement OAuth2 or a similar robust authentication/authorization system.
+*   **Real-time Data:** Use WebSockets for real-time data updates on the frontend.
+*   **Scalability:** Design for horizontal scaling of backend services.
+*   **Configuration Management:** Use environment variables for all configurations (ports, API keys, database URLs, etc.) rather than hardcoding.
+*   **Comprehensive Error Handling and Logging.**
+*   **More Sophisticated Frontend UI/UX.**
+*   **Production-Ready Docker Setup:** Optimize Docker images for size and security, implement health checks, etc.
