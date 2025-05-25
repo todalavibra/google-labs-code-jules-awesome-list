@@ -13,207 +13,193 @@
 ---
 
 ## Table of Contents
-
-- [Table of Contents](#table-of-contents)
 - [Everyday Dev Tasks](#everyday-dev-tasks)
 - [Debugging](#debugging)
 - [Documentation](#documentation)
 - [Testing](#testing)
 - [Package Management](#package-management)
+- [Code Quality & Best Practices](#code-quality--best-practices)
+- [Performance Optimization](#performance-optimization)
 - [AI-Native Tasks](#ai-native-tasks)
 - [Context](#context)
-- [Fun \& Experimental](#fun--experimental)
+- [Fun & Experimental](#fun--experimental)
 - [Start from Scratch](#start-from-scratch)
 - [Contributing](#contributing)
 
 ---
 
 ## Everyday Dev Tasks
-
-- `// Refactor {a specific} file from {x} to {y}...`
+- `// Refactor {file} from {x} to {y}...`  
   <sub>General-purpose, applies to any language or repo.</sub>
-
-- `// Add a test suite...`
+- `// Add a test suite for {component}...`  
   <sub>Useful for repos lacking test coverage.</sub>
-
-- `// Add type hints to {a specific} Python function...`
+- `// Add type hints to {function} in {file}...`  
   <sub>Python codebases transitioning to typed code.</sub>
-
-- `// Generate mock data for {a specific} schema...`
+- `// Generate mock data matching {schema}...`  
   <sub>APIs, frontends, or test-heavy environments.</sub>
-
-- `// Convert these commonJS modules to ES modules...`
+- `// Convert these CommonJS modules to ES modules...`  
   <sub>JS/TS projects modernizing legacy code.</sub>
+- `// Rewrite this callback code using async/await...`  
+  <sub>JavaScript or Python async improvements.</sub>
+- `// Implement a data class for this JSON structure...`  
+  <sub>Python projects needing structured data handling.</sub>
 
-- `// Turn this callback-based code into async/await...`
-  <sub>JavaScript or Python codebases improving async logic.</sub>
-
-- `// Implement a data class for this dictionary structure...`
-  <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
-
-
+---
 
 ## Debugging
+- `// Fix {error} in {file}...`  
+  <sub>For runtime or build errors.</sub>
+- `// Profile performance of {function}...`  
+  <sub>Identify bottlenecks in critical paths.</sub>
+- `// Trace why {variable} is undefined...`  
+  <sub>Frontend/backend JS/TS bugs.</sub>
+- `// Diagnose memory leaks in {process}...`  
+  <sub>Long-running services.</sub>
+- `// Add debug logs for {feature}...`  
+  <sub>Troubleshooting silent failures.</sub>
+- `// Find race conditions in {async_code}...`  
+  <sub>Concurrency issues.</sub>
+- `// Add execution trace to {python_script}...`  
+  <sub>Debug complex Python logic.</sub>
 
-- `// Help me fix {a specific} error...`
-  <sub>For any repo where you're stuck on a runtime or build error.</sub>
-
-- `// Why is {this specific snippet of code} slow?`
-  <sub>Performance profiling for loops, functions, or queries.</sub>
-
-- `// Trace why this value is undefined...`
-  <sub>Frontend and backend JS/TS bugs.</sub>
-
-- `// Diagnose this memory leak...`
-  <sub>Server-side apps or long-running processes.</sub>
-
-- `// Add logging to help debug this issue...`
-  <sub>Useful when troubleshooting silent failures.</sub>
-
-- `// Find race conditions in this async code`
-  <sub>Concurrent systems in JS, Python, Go, etc.</sub>
-
-- `// Add print statements to trace the execution flow of this Python script...`
-  <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
-
+---
 
 ## Documentation
+- `// Write README with {features}...`  
+  <sub>Projects lacking overview.</sub>
+- `// Add inline docs to {complex_code}...`  
+  <sub>Improve maintainability.</sub>
+- `// Document {API_endpoint} with examples...`  
+  <sub>REST/GraphQL backends.</sub>
+- `// Generate Sphinx docs for {module}...`  
+  <sub>Python documentation.</sub>
+- `// Create architecture diagram for {system}...`  
+  <sub>Complex systems documentation.</sub>
 
-- `// Write a README for this project`
-  <sub>Any repo lacking a basic project overview.</sub>
-
-- `// Add comments to this code`
-  <sub>Improves maintainability of complex logic.</sub>
-
-- `// Write API docs for this endpoint`
-  <sub>REST or GraphQL backends.</sub>
-
-- `// Generate Sphinx-style docstrings for this Python module/class/function...`
-  <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
-
-
+---
 
 ## Testing
+- `// Write integration test for {endpoint}...`  
+  <sub>API test coverage.</sub>
+- `// Mock {external_service} for tests...`  
+  <sub>Isolated testing.</sub>
+- `// Convert {test} from Mocha to Jest...`  
+  <sub>Test framework migration.</sub>
+- `// Generate property-based tests for {fn}...`  
+  <sub>Functional code validation.</sub>
+- `// Simulate network latency in {tests}...`  
+  <sub>Real-world conditions.</sub>
+- `// Ensure backward compatibility for {api}...`  
+  <sub>Library/SDK maintenance.</sub>
+- `// Create Pytest fixture for {api_call}...`  
+  <sub>Python test mocking.</sub>
 
-- `// Add integration tests for this API endpoint`
-  <sub>Express, FastAPI, Django, Flask apps.</sub>
-
-- `// Write a test that mocks fetch`
-  <sub>Browser-side fetch or axios logic.</sub>
-
-- `// Convert this test from Mocha to Jest`
-  <sub>JS test suite migrations.</sub>
-
-- `// Generate property-based tests for this function`
-  <sub>Functional or logic-heavy code.</sub>
-
-- `// Simulate slow network conditions in this test suite`
-  <sub>Web and mobile apps.</sub>
-
-- `// Write a test to ensure backward compatibility for this function`
-  <sub>Library or SDK maintainers.</sub>
-
-- `// Write a Pytest fixture to mock this external API call...`
-  <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
-
-
+---
 
 ## Package Management
+- `// Upgrade {linter} with autofixes...`  
+  <sub>Modernize lint configs.</sub>
+- `// Show changelog for {package}...`  
+  <sub>Dependency research.</sub>
+- `// Audit unused dependencies...`  
+  <sub>Reduce bloat.</sub>
+- `// Check maintenance status of {pkgs}...`  
+  <sub>Security review.</sub>
+- `// Setup {renovate|dependabot}...`  
+  <sub>Auto dependency updates.</sub>
 
-- `// Upgrade my linter and autofix breaking config changes`
-  <sub>JS/TS repos using ESLint or Prettier.</sub>
+---
 
-- `// Show me the changelog for React 19`
-  <sub>Web frontend apps using React.</sub>
+## Code Quality & Best Practices
+- `// Enforce consistent error handling...`  
+  <sub>Standardize error management.</sub>
+- `// Convert {script} to CLI with {argparse|click}...`  
+  <sub>User-friendly tools.</sub>
+- `// Add input validation to {endpoint}...`  
+  <sub>Secure APIs.</sub>
+- `// Apply SOLID to {class}...`  
+  <sub>OOP improvements.</sub>
+- `// Generate .editorconfig...`  
+  <sub>Consistent styling.</sub>
+- `// Implement proper logging in {service}...`  
+  <sub>Production-ready apps.</sub>
 
-- `// Which dependencies can I safely remove?`
-  <sub>Bloated or legacy codebases.</sub>
+---
 
-- `// Check if these packages are still maintained`
-  <sub>Security-conscious or long-term projects.</sub>
+## Performance Optimization
+- `// Optimize SQL query in {file}...`  
+  <sub>Database performance.</sub>
+- `// Cache {expensive_fn} with {lru_cache|memoize}...`  
+  <sub>Compute optimization.</sub>
+- `// Reduce bundle size for {app}...`  
+  <sub>Frontend optimization.</sub>
+- `// Parallelize {cpu_intensive_task}...`  
+  <sub>Multiprocessing.</sub>
+- `// Implement lazy loading for {feature}...`  
+  <sub>Resource efficiency.</sub>
 
-- `// Set up Renovate or Dependabot for auto-updates`
-  <sub>Best for active projects with CI/CD.</sub>
-
-
+---
 
 ## AI-Native Tasks
+- `// Generate 3 feature ideas for {repo}...`  
+  <sub>Product development.</sub>
+- `// Identify tech debt in {module}...`  
+  <sub>Code quality audit.</sub>
+- `// Find duplicate logic across {files}...`  
+  <sub>DRY violations.</sub>
+- `// Cluster related functions in {codebase}...`  
+  <sub>Code organization.</sub>
+- `// Scope {issue} for Jules to solve...`  
+  <sub>Task preparation.</sub>
+- `// Convert {logic} to reusable module...`  
+  <sub>Code modularization.</sub>
 
-- `// Analyze this repo and generate 3 feature ideas`
-  <sub>Vision-stage or greenfield products.</sub>
-
-- `// Identify tech debt in this file`
-  <sub>Codebases with messy or fragile logic.</sub>
-
-- `// Find duplicate logic across files`
-  <sub>Sprawling repos lacking DRY practices.</sub>
-
-- `// Cluster related functions and suggest refactors`
-  <sub>Projects with lots of utils or helpers.</sub>
-
-- `// Help me scope this issue so Jules can solve it`
-  <sub>For working with Jules on real issues.</sub>
-
-- `// Convert this function into a reusable plugin/module`
-  <sub>Componentizing logic-heavy code.</sub>
-
-- `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
-  <sub>For optimizing performance in computationally intensive Python applications.</sub>
-
-
+---
 
 ## Context
+- `// Write status update for {changes}...`  
+  <sub>Team communication.</sub>
+- `// Summarize last {n} days of commits...`  
+  <sub>Project catch-up.</sub>
+- `// Explain {complex_code} in simple terms...`  
+  <sub>Knowledge sharing.</sub>
 
-- `// Write a status update based on recent commits`
-  <sub>Managerial and async communication.</sub>
-
-- `// Summarize all changes in the last 7 days`
-  <sub>Catching up after time off.</sub>
-
-
+---
 
 ## Fun & Experimental
+- `// Add confetti to {success_action}...`  
+  <sub>User delight.</sub>
+- `// Inject joke on {build_complete}...`  
+  <sub>Developer humor.</sub>
+- `// Create terminal-based {mini_game}...`  
+  <sub>Learning projects.</sub>
+- `// Add {easter_egg} to {UI}...`  
+  <sub>Creative touches.</sub>
+- `// Turn {tool} into GitHub App...`  
+  <sub>Platform integration.</sub>
 
-- `// Add a confetti animation when {a specific} action succeeds`
-  <sub>Frontend web apps with user delight moments.</sub>
-
-- `// Inject a developer joke when {a specific} build finishes`
-  <sub>Personal projects or team tools.</sub>
-
-- `// Build a mini CLI game that runs in the terminal`
-  <sub>For learning or community fun.</sub>
-
-- `// Add a dark mode Easter egg to this UI`
-  <sub>Design-heavy frontend projects.</sub>
-
-- `// Turn this tool into a GitHub App`
-  <sub>Reusable, platform-integrated tools.</sub>
+---
 
 ## Start from Scratch
+- `// Explain {repo} architecture...`  
+  <sub>Onboarding helper.</sub>
+- `// Bootstrap {express|flask|django} app...`  
+  <sub>Quickstart backends.</sub>
+- `// Setup {turborepo|nx} monorepo...`  
+  <sub>Multi-package projects.</sub>
+- `// Init {poetry|pipenv} Python project...`  
+  <sub>Python environment.</sub>
+- `// Create {chrome_extension} template...`  
+  <sub>Browser extensions.</sub>
+- `// Scaffold {web_scraper} project...`  
+  <sub>Data collection.</sub>
 
-- `// What's going on in this repo?`
-  <sub>Great for legacy repos or onboarding onto unfamiliar code.</sub>
-
-- `// Initialize a new Express app with CORS enabled`
-  <sub>Web backend projects using Node.js and Express.</sub>
-
-- `// Set up a monorepo using Turborepo and PNPM`
-  <sub>Multi-package JS/TS projects with shared dependencies.</sub>
-
-- `// Bootstrap a Python project with Poetry and Pytest`
-  <sub>Python repos aiming for clean dependency and test setup.</sub>
-
-- `// Create a starter template for a Chrome extension`
-  <sub>Browser extension development.</sub>
-
-- `// I want to build a web scraper—start me off`
-  <sub>Data scraping or automation tools using Python/Node.</sub>
-
-
+---
 
 ## Contributing
+1. Fork this repository
+2. Add your prompt suggestions
+3. Submit a pull request
+4. Include context for when the prompt is useful
 
-Your contributions are welcome! Add new prompts, fix formatting, or suggest categories.
-
-- 📄 [Contributing Guide](contributing.md)
-- 🪄 Open a [Pull Request](https://github.com/YOUR_REPO/pulls)
+📄 [Full Contributing Guide](CONTRIBUTING.md)
