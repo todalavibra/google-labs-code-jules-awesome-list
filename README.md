@@ -51,6 +51,20 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
+- `// Add a type checker to this code...`
+  <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
+
+- `// Extract this logic into a separate function/module`
+  <sub>For improving readability or reusability.</sub>
+
+- `// Set up GitHub Actions to run tests on PRs`
+  <sub>Add basic CI to a repo.</sub>
+
+- `// Format this repo using Prettier and ESLint`
+  <sub>Standardize code style across JS/TS projects.</sub>
+
+- `// Replace all deprecated API calls in this file`
+  <sub>For keeping up with library upgrades.</sub>
 
 
 ## Debugging
@@ -75,6 +89,15 @@
 
 - `// Add print statements to trace the execution flow of this Python script...`
   <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
+
+- `// Show me what changed between this working and broken commit...`
+  <sub>For bisecting recent bugs.</sub>
+
+- `// Explain why this hook is running multiple times...`
+  <sub>Common React development issue.</sub>
+
+- `// Add error boundaries to this React component tree...`
+  <sub>Catch runtime errors in UI.</sub>
 
 
 ## Documentation
@@ -116,6 +139,14 @@
 - `// Write a Pytest fixture to mock this external API call...`
   <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
 
+- `// Write tests for this SQL query or migration...`
+  <sub>For ensuring DB changes are safe.</sub>
+
+- `// Create a test matrix for these environment variables...`
+  <sub>CI configuration or backend tests.</sub>
+
+- `// Add snapshot tests for this component...`
+  <sub>Useful for visual regression in frontend code.</sub>
 
 
 ## Package Management
@@ -135,6 +166,11 @@
 - `// Set up Renovate or Dependabot for auto-updates`
   <sub>Best for active projects with CI/CD.</sub>
 
+- `// Identify transitive dependencies that inflate bundle size`
+  <sub>Helps trim frontend bundles.</sub>
+
+- `// Lock all dependencies to exact versions`
+  <sub>For reproducibility in builds.</sub>
 
 
 ## AI-Native Tasks
@@ -157,9 +193,17 @@
 - `// Convert this function into a reusable plugin/module`
   <sub>Componentizing logic-heavy code.</sub>
 
-- `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
+- `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)`
   <sub>For optimizing performance in computationally intensive Python applications.</sub>
 
+- `// Suggest 3 prompt variants for this OpenAI API call`
+  <sub>For improving LLM prompt engineering.</sub>
+
+- `// Refactor this pipeline for streaming LLM responses`
+  <sub>For chat or stream-based apps.</sub>
+
+- `// Map each function in this file to a user-facing feature...`
+  <sub>For grounding backend logic to UX.</sub>
 
 
 ## Context
@@ -170,6 +214,11 @@
 - `// Summarize all changes in the last 7 days`
   <sub>Catching up after time off.</sub>
 
+- `// Generate a changelog based on commit history`
+  <sub>For release notes or product updates.</sub>
+
+- `// Write a summary of this PR for a non-technical teammate`
+  <sub>For async teams and product folks.</sub>
 
 
 ## Fun & Experimental
@@ -188,6 +237,13 @@
 
 - `// Turn this tool into a GitHub App`
   <sub>Reusable, platform-integrated tools.</sub>
+
+- `// Add a random loading animation to this CLI tool`
+  <sub>For delightful dev tools.</sub>
+
+- `// Show a random quote on every build`
+  <sub>Adds personality to dev experience.</sub>
+
 
 ## Start from Scratch
 
@@ -208,6 +264,15 @@
 
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
+
+
+## Infrastructure & DevOps
+
+- `// Write a Dockerfile for this app with production best practices`
+  <sub>For deploying easily.</sub>
+
+- `// Set up GitHub Secrets to deploy this repo to Vercel/Netlify`
+  <sub>Secure deployment setup.</sub>
 
 
 
