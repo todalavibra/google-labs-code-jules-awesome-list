@@ -209,6 +209,10 @@
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
 
+## Security
+
+- `// Identify potential security vulnerabilities in this project`
+   <sub>Scan for common issues and unsafe dependencies.</sub>
 
 
 ## Contributing
