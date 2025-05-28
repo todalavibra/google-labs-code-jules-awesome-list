@@ -212,7 +212,7 @@
 ## Security
 
 - `// Identify potential security vulnerabilities in this code`
-   <sub>Scan for common issues like SQL injection, XSS, and unsafe dependencies.</sub>
+   <sub>Scan for common issues and unsafe dependencies.</sub>
 
 
 ## Contributing
