@@ -211,7 +211,7 @@
 
 ## Security
 
-- `// Identify potential security vulnerabilities in this code`
+- `// Identify potential security vulnerabilities in this project`
    <sub>Scan for common issues and unsafe dependencies.</sub>
 
 
