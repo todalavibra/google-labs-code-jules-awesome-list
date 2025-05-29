@@ -48,6 +48,9 @@
 - `// Turn this callback-based code into async/await...`
   <sub>JavaScript or Python codebases improving async logic.</sub>
 
+- `// Analyze the complexity of {a specific function} and suggest ways to optimize it for performance and readability.`
+  <sub>Focuses on proactive code improvement and optimization.</sub>
+
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
@@ -73,6 +76,9 @@
 - `// Find race conditions in this async code`
   <sub>Concurrent systems in JS, Python, Go, etc.</sub>
 
+- `// Simulate {a specific edge case scenario} for {a function/module} and help me identify potential failure points.`
+  <sub>Encourages thinking about robustness and resilience during debugging.</sub>
+
 - `// Add print statements to trace the execution flow of this Python script...`
   <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
 
@@ -87,6 +93,9 @@
 
 - `// Write API docs for this endpoint`
   <sub>REST or GraphQL backends.</sub>
+
+- `// Based on the code in {file_path} and its dependencies, generate a mermaid diagram illustrating the architecture or flow.`
+  <sub>Leverages AI for visual documentation generation.</sub>
 
 - `// Generate Sphinx-style docstrings for this Python module/class/function...`
   <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
@@ -113,6 +122,9 @@
 - `// Write a test to ensure backward compatibility for this function`
   <sub>Library or SDK maintainers.</sub>
 
+- `// Analyze the existing test suite for {a specific module} and identify any gaps in test coverage, suggesting specific test cases to add.`
+  <sub>Goes beyond just adding tests to strategically improving existing test suites.</sub>
+
 - `// Write a Pytest fixture to mock this external API call...`
   <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
 
@@ -134,6 +146,9 @@
 
 - `// Set up Renovate or Dependabot for auto-updates`
   <sub>Best for active projects with CI/CD.</sub>
+
+- `// My project build is failing due to conflicting dependencies. Analyze my `package.json` / `pyproject.toml` / `pom.xml` `and help me resolve the version conflicts.`
+  <sub>Addresses a common and often frustrating developer issue.</sub>
 
 
 
@@ -157,6 +172,9 @@
 - `// Convert this function into a reusable plugin/module`
   <sub>Componentizing logic-heavy code.</sub>
 
+- `// Given the user feedback in {source: e.g., issue tracker, support tickets}, identify the most impactful areas for UX improvement in this application.`
+  <sub>Uses AI to bridge the gap between user feedback and development priorities.</sub>
+
 - `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
   <sub>For optimizing performance in computationally intensive Python applications.</sub>
 
@@ -169,6 +187,9 @@
 
 - `// Summarize all changes in the last 7 days`
   <sub>Catching up after time off.</sub>
+
+- `// Explain the evolution of {a specific feature/module} by analyzing its commit history and identifying key architectural decisions made.`
+  <sub>Provides deep historical context for better understanding of code.</sub>
 
 
 
@@ -189,6 +210,9 @@
 - `// Turn this tool into a GitHub App`
   <sub>Reusable, platform-integrated tools.</sub>
 
+- `// Compose a short, motivational poem or haiku for the team, to be displayed in the CI/CD pipeline output upon a successful build.`
+  <sub>Adds a creative and human touch to the development process.</sub>
+
 ## Start from Scratch
 
 - `// What's going on in this repo?`
@@ -208,6 +232,9 @@
 
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
+
+- `// I want to build {a type of application, e.g., a real-time chat app} using {preferred tech stack, e.g., React, Firebase, and TypeScript}. Generate a boilerplate project structure with key modules and configurations.`
+  <sub>Offers more comprehensive project scaffolding based on user choices.</sub>
 
 
 
