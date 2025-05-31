@@ -51,6 +51,18 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
+- `// Optimize the following {language} code for better performance...`
+  <sub>General-purpose, for improving speed or resource usage.</sub>
+
+- `// Internationalize this application to support {list of languages}...`
+  <sub>For applications aiming for a global audience.</sub>
+
+- `// Update all dependencies in this {package_manager_file} and resolve any conflicts...`
+  <sub>Useful for keeping projects up-to-date, e.g., package.json, requirements.txt, pom.xml.</sub>
+
+- `// Implement error handling for the {specific function/module}...`
+  <sub>To improve robustness and user experience.</sub>
+
 
 
 ## Debugging
@@ -76,6 +88,12 @@
 - `// Add print statements to trace the execution flow of this Python script...`
   <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
 
+- `// Analyze the logs from {log_file_or_system} to find the root cause of {specific_issue}...`
+  <sub>For complex issues requiring log analysis.</sub>
+
+- `// Set up a remote debugging environment for this {application_type} application...`
+  <sub>For projects needing debugging in a deployed or non-local environment.</sub>
+
 
 ## Documentation
 
@@ -90,6 +108,12 @@
 
 - `// Generate Sphinx-style docstrings for this Python module/class/function...`
   <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
+
+- `// Generate a sequence diagram for the interaction between {module_A} and {module_B}...`
+  <sub>Useful for visualizing complex interactions in a system.</sub>
+
+- `// Create a tutorial for new contributors on how to set up the development environment for this project...`
+  <sub>To help onboard new developers.</sub>
 
 
 
@@ -115,6 +139,15 @@
 
 - `// Write a Pytest fixture to mock this external API call...`
   <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
+
+- `// Implement end-to-end tests for the user registration and login flow...`
+  <sub>For web applications to ensure critical user paths are working.</sub>
+
+- `// Add performance benchmark tests for the following critical functions: {function_names}...`
+  <sub>To track and ensure performance regressions are caught.</sub>
+
+- `// Write unit tests for the edge cases in {specific_module_or_function}...`
+  <sub>To ensure robustness by testing non-standard inputs or conditions.</sub>
 
 
 
@@ -159,6 +192,15 @@
 
 - `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
   <sub>For optimizing performance in computationally intensive Python applications.</sub>
+
+- `// Suggest improvements to the user interface and user experience of this application based on common design principles...`
+  <sub>For applications looking to enhance usability and aesthetics.</sub>
+
+- `// Analyze the codebase and identify potential security vulnerabilities in {specific_file_or_module}...`
+  <sub>To proactively address security concerns.</sub>
+
+- `// Convert this monolithic application into a microservices architecture, outlining the proposed services and their interactions...`
+  <sub>For large applications looking to modernize their architecture.</sub>
 
 
 
@@ -208,6 +250,12 @@
 
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
+
+- `// Initialize a new mobile application project using {framework e.g., React Native, Flutter} with basic navigation and a login screen...`
+  <sub>For quickly starting mobile app development.</sub>
+
+- `// Set up a CI/CD pipeline for this project using {CI_CD_tool e.g., GitHub Actions, Jenkins} to automate build, test, and deployment...`
+  <sub>For improving development workflow and release frequency.</sub>
 
 
 
