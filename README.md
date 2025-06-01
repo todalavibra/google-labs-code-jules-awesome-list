@@ -51,6 +51,12 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
+- `// Convert this {language A} code to {language B}`
+  <sub>e.g., Python to JavaScript, Java to Kotlin</sub>
+
+- `// Write a script to automate {a repetitive task}`
+  <sub>e.g., renaming files, deploying a simple app</sub>
+
 
 
 ## Debugging
@@ -76,6 +82,10 @@
 - `// Add print statements to trace the execution flow of this Python script...`
   <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
 
+- `// Explain this error message: {paste error message}`
+
+- `// Suggest alternative ways to implement {a piece of logic} to avoid {a specific bug}`
+
 
 ## Documentation
 
@@ -90,6 +100,8 @@
 
 - `// Generate Sphinx-style docstrings for this Python module/class/function...`
   <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
+
+- `// Create a tutorial for using {a specific feature} in this project.`
 
 
 
@@ -115,6 +127,8 @@
 
 - `// Write a Pytest fixture to mock this external API call...`
   <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
+
+- `// Generate test cases for {a function with complex logic}.`
 
 
 
@@ -159,6 +173,10 @@
 
 - `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
   <sub>For optimizing performance in computationally intensive Python applications.</sub>
+
+- `// Suggest improvements to this code to make it more readable and maintainable.`
+
+- `// Identify potential security vulnerabilities in this code.`
 
 
 
