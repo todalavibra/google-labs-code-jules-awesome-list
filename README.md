@@ -24,6 +24,7 @@
 - [Context](#context)
 - [Fun \& Experimental](#fun--experimental)
 - [Start from Scratch](#start-from-scratch)
+- [Environment Setup](#environment-setup)
 - [Contributing](#contributing)
 
 ---
@@ -209,6 +210,28 @@
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
 
+## Environment Setup
+These instructions update your environment, enabling Jules to work in the same environment you are.
+
+### nvm, Node.js & pnpm
+- Installs nvm
+- Uses nvm to install & use the latest Node.js LTS
+- Enable & use pnpm with the above
+- Use pnpm to install the packages as per your package.json
+- Launch dev environment
+```
+set -eux
+cd /app
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+nvm install --lts
+corepack enable pnpm
+pnpm -v
+pnpm i
+pnpm dev
+```
 
 
 ## Contributing
