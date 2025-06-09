@@ -51,6 +51,8 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
+  - `// Generate a step-by-step migration plan from {old technology} to {new technology}...`
+  <sub>Ideal for teams planning technical migrations or modernizing legacy systems.</sub>
 
 
 ## Debugging
