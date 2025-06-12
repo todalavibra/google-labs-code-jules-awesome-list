@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background_color"
+    android:padding="16dp"
+    tools:context=".presentation.ui.UpgradesActivity">
+
+    <TextView
+        android:id="@+id/titleUpgrades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Upgrades!"
+        android:textSize="40sp"
+        android:textColor="@color/text_color_primary"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/currentCoinsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleUpgrades"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Coins: 0"
+        android:textSize="24sp"
+        android:textColor="@color/text_color_primary"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/upgradesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/currentCoinsTextView"
+        android:layout_above="@+id/backButton"
+        android:paddingTop="8dp"
+        android:clipToPadding="false"/>
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Back"
+        android:textSize="20sp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:backgroundTint="@color/button_background_color"
+        android:textColor="@color/text_color_on_button"/>
+
+</RelativeLayout>

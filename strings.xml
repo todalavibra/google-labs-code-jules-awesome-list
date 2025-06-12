@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <!-- Network Messages -->
+    <string name="internet_required_message">Please turn on your internet to play.</string>
+    <string name="internet_lost_message">Internet connection lost. Please reconnect to continue.</string>
+    <string name="retry_button_text">Retry</string>
+    <string name="ok_button_text">OK</string>
+</resources>

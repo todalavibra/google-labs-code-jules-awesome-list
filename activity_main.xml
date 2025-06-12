@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background_color"
+    tools:context=".presentation.ui.MainActivity">
+
+    <TextView
+        android:id="@+id/scoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Score: 0"
+        android:textSize="30sp"
+        android:textColor="@color/text_color_primary"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/boosterStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scoreTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:textSize="16sp"
+        android:textColor="@color/teal_700"
+        android:visibility="gone"
+        tools:text="2x Coins Active! 04:30"
+        tools:visibility="visible"/>
+
+    <com.example.myapp.presentation.ui.GameView
+        android:id="@+id/gameView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/scoreTextView"
+        android:layout_above="@+id/buttonsLayout"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:id="@+id/buttonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/dailyRewardButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_placeholder_gift"
+            android:contentDescription="Daily Reward"
+            android:background="@drawable/rounded_button_background"
+            android:backgroundTint="@color/teal_200"
+            android:scaleType="fitCenter"
+            android:padding="12dp"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageButton
+            android:id="@+id/playPauseButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_placeholder_play"
+            android:contentDescription="Play/Pause"
+            android:background="@drawable/rounded_button_background"
+            android:scaleType="fitCenter"
+            android:padding="16dp"/>
+
+        <ImageButton
+            android:id="@+id/upgradesButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_placeholder_upgrades"
+            android:contentDescription="Upgrades"
+            android:background="@drawable/rounded_button_background"
+            android:scaleType="fitCenter"
+            android:padding="12dp"/>
+
+        <ImageButton
+            android:id="@+id/skinsButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_placeholder_skins"
+            android:contentDescription="Skins"
+            android:background="@drawable/rounded_button_background"
+            android:backgroundTint="@color/purple_200"
+            android:scaleType="fitCenter"
+            android:padding="12dp"/>
+
+        <Button
+            android:id="@+id/testBoosterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Test 2x Boost"
+            android:textSize="12sp"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+</RelativeLayout>
