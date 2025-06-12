@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="@drawable/rounded_button_background"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/upgradeIconImageView"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_placeholder_upgrade_item"
+        android:scaleType="fitCenter"
+        android:layout_marginEnd="12dp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/upgradeNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upgrade Name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_color_on_button"/>
+
+        <TextView
+            android:id="@+id/upgradeDescriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upgrade description here."
+            android:textSize="14sp"
+            android:textColor="@color/text_color_on_button"/>
+
+        <TextView
+            android:id="@+id/upgradeLevelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level: 0/5"
+            android:textSize="14sp"
+            android:textColor="@color/text_color_on_button"
+            android:layout_marginTop="4dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/upgradeActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="Cost: 100"
+        android:textSize="16sp"
+        android:backgroundTint="@color/app_background_color"
+        android:textColor="@color/text_color_primary"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"/>
+
+</LinearLayout>

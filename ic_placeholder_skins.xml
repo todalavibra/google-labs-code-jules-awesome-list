@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="?attr/colorControlNormal">
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M20.5,4c0.28,0 0.5,0.22 0.5,0.5v15c0,0.28 -0.22,0.5 -0.5,0.5H3.5C3.22,20 3,19.78 3,19.5v-15C3,4.22 3.22,4 3.5,4h4.5c0.17,0 0.32,0.09 0.41,0.22L10,6h4l1.09,-1.78C15.18,4.09 15.33,4 15.5,4H20.5M12,15c-1.66,0 -3,-1.34 -3,-3s1.34,-3 3,-3 3,1.34 3,3 -1.34,3 -3,3Z"/>
+  <!-- Simple T-shirt like shape -->
+</vector>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/skinItemLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="8dp"
+    android:layout_margin="4dp"
+    android:background="@drawable/rounded_button_background">
+
+    <ImageView
+        android:id="@+id/skinIconImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_placeholder_play"
+        android:scaleType="fitCenter"
+        android:padding="4dp"/>
+
+    <TextView
+        android:id="@+id/skinNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skin Name"
+        android:textSize="16sp"
+        android:textColor="@color/text_color_on_button"
+        android:layout_marginTop="4dp"/>
+
+    <Button
+        android:id="@+id/skinActionButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unlock (100)"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/app_background_color"
+        android:textColor="@color/text_color_primary"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"/>
+</LinearLayout>
