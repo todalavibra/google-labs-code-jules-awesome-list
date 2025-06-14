@@ -1,0 +1,12 @@
+# semgrep.yml
+#
+# See Semgrep docs for more on configuration:
+# https://semgrep.dev/docs/writing-rules/rule-syntax/
+#
+# For a list of available rulesets:
+# https://semgrep.dev/explore
+rules:
+  # The "p/default" ruleset is a curated collection of rules from various sources
+  # that are generally applicable and have a low false-positive rate.
+  # It includes rules for security, correctness, and performance.
+  - p/default
