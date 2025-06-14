@@ -1,0 +1,25 @@
+# .github/workflows/sast-scan.yml
+name: SAST Scan
+
+on:
+  push:
+    branches: [ main ] # Adjust branches as needed, e.g., [ '*' ] for all branches
+  pull_request:
+    branches: [ main ] # Adjust branches as needed
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  sast-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x' # Use a recent Python version
+
+      # The run-sast-scan.sh script handles Semgrep installation and execution
+      - name: Run SAST Scan Script
+        run: ./run-sast-scan.sh

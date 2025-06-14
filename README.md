@@ -1,3 +1,35 @@
+## Static Application Security Testing (SAST)
+
+This project integrates **Semgrep**, an open-source static analysis tool, to proactively identify potential security vulnerabilities and code quality issues.
+
+### Automated Scanning via GitHub Actions
+
+A GitHub Actions workflow is configured in `.github/workflows/sast-scan.yml` to automatically scan the codebase on every `push` and `pull_request` to the `main` branch. This helps in early detection of issues.
+
+The workflow uses the `run-sast-scan.sh` script, which in turn utilizes the Semgrep configuration defined in `semgrep.yml`.
+
+### Local Usage
+
+To run Semgrep locally:
+
+1.  **Install Python and Pip**: Ensure you have Python 3.6+ and pip installed.
+2.  **Install Semgrep**:
+    ```bash
+    python3 -m pip install semgrep
+    ```
+3.  **Run the Scan Script**:
+    Execute the scan script from the root of the repository:
+    ```bash
+    ./run-sast-scan.sh
+    ```
+    This will use the rules defined in `semgrep.yml`.
+
+### Configuration
+
+*   **Rulesets**: The primary Semgrep configuration is in `semgrep.yml`. By default, it uses the `p/default` ruleset, which is a collection of general-purpose rules for security, correctness, and performance. You can customize this file to add more specific rulesets (e.g., `r/python`, `r/java`, `r/owasp-top-ten`) or individual rules. Refer to the [Semgrep Registry](https://semgrep.dev/explore) for available rules.
+*   **Ignoring Files/Directories**: To exclude specific files or directories from scanning (e.g., test files, vendor directories), add their paths to the `.semgrepignore` file, one per line.
+
+---
 <p align="center">
   <img src="assets/jules-readme.png" alt="Jules Awesome List" width="600">
 </p>
