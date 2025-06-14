@@ -1,0 +1,37 @@
+network_zones:
+  - name: public
+  - name: private
+  - name: dmz
+
+services:
+  - name: frontend_web_server
+    port: 443
+    protocol: TCP
+    network_zone: public
+    processes_sensitive_data: false
+  - name: user_management_api
+    port: 8080
+    protocol: TCP
+    network_zone: private
+    processes_sensitive_data: true
+  - name: payment_gateway_proxy
+    port: 8443
+    protocol: TCP
+    network_zone: dmz
+    processes_sensitive_data: true
+  - name: internal_reporting_service
+    port: 9000
+    protocol: TCP
+    network_zone: private
+    processes_sensitive_data: false
+
+
+databases:
+  - name: customer_data_db
+    type: SQL
+    network_zone: private
+    stores_sensitive_data: true
+  - name: session_cache_db
+    type: NoSQL
+    network_zone: private
+    stores_sensitive_data: false

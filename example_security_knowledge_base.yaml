@@ -1,0 +1,65 @@
+threat_actors:
+  - name: "Script Kiddie"
+    skill_level: "Low"
+    motivation: "Curiosity, Vandalism"
+  - name: "Organized Crime Syndicate"
+    skill_level: "High"
+    motivation: "Financial Gain"
+
+attack_vectors:
+  - name: "SQL Injection (SQLi)"
+    description: "Injecting malicious SQL queries into input fields to manipulate backend databases."
+    target_components: ["Database", "Service"] # Targets services that build SQL queries, and databases themselves
+  - name: "Cross-Site Scripting (XSS)"
+    description: "Injecting malicious scripts into web pages viewed by other users."
+    target_components: ["Service"] # Typically targets web services/applications
+  - name: "Unpatched Software Exploitation"
+    description: "Exploiting known vulnerabilities in outdated software components."
+    target_components: ["Service", "Database", "Operating System"]
+  - name: "Phishing"
+    description: "Deceiving users into revealing sensitive information or installing malware."
+    target_components: ["User"] # Primarily targets users, but can affect services/databases indirectly
+
+vulnerabilities:
+  - name: "CVE-2023-0001 (SQLi in Login)"
+    description: "SQL Injection vulnerability in the login form of user_management_api allows authentication bypass."
+    attack_vector: "SQL Injection (SQLi)" # Name of the attack vector
+    affected_components: ["user_management_api"] # Specific component name
+    severity: "High"
+  - name: "Log4Shell (CVE-2021-44228)"
+    description: "Remote code execution vulnerability in Apache Log4j library."
+    attack_vector: "Unpatched Software Exploitation" # Name of the attack vector
+    affected_components: [] # General vulnerability, could affect many components if they use Log4j
+    severity: "Critical"
+  - name: "XSS in Search Results"
+    description: "Cross-site scripting vulnerability in the search results page of frontend_web_server."
+    attack_vector: "Cross-Site Scripting (XSS)" # Name of the attack vector
+    affected_components: ["frontend_web_server"]
+    severity: "Medium"
+
+security_controls:
+  - name: "Input Validation and Sanitization"
+    description: "Validating and sanitizing all user-supplied input to prevent injection attacks."
+    mitigates: ["SQL Injection (SQLi)", "Cross-Site Scripting (XSS)"] # Names of attack vectors
+    cost_to_implement: "Medium"
+    effectiveness: "High"
+  - name: "Parameterized Queries (Prepared Statements)"
+    description: "Using parameterized queries to prevent SQL injection by treating input as data, not executable code."
+    mitigates: ["SQL Injection (SQLi)"]
+    cost_to_implement: "Low" # If ORM/framework supports it well
+    effectiveness: "High"
+  - name: "Regular Software Patching and Updates"
+    description: "Keeping all software components, libraries, and operating systems up-to-date."
+    mitigates: ["Unpatched Software Exploitation"]
+    cost_to_implement: "Medium"
+    effectiveness: "High"
+  - name: "Web Application Firewall (WAF)"
+    description: "A firewall that filters, monitors, and blocks malicious HTTP/S traffic to and from a web application."
+    mitigates: ["SQL Injection (SQLi)", "Cross-Site Scripting (XSS)"]
+    cost_to_implement: "Medium"
+    effectiveness: "Medium" # Can be bypassed, effectiveness depends on ruleset
+  - name: "Security Awareness Training"
+    description: "Training users to recognize and respond to phishing attempts and other social engineering tactics."
+    mitigates: ["Phishing"]
+    cost_to_implement: "Low"
+    effectiveness: "Medium"

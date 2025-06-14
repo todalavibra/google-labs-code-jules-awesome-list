@@ -24,6 +24,7 @@
 - [Context](#context)
 - [Fun \& Experimental](#fun--experimental)
 - [Start from Scratch](#start-from-scratch)
+- [Threat Modeling Integration](#threat-modeling-integration)
 - [Contributing](#contributing)
 
 ---
@@ -209,7 +210,81 @@
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
 
+## Threat Modeling Integration
 
+This project now includes a basic framework for performing threat modeling on application architectures.
+
+**Core Components:**
+
+*   **`architecture.py`**: Defines classes to represent your application's architecture (`Service`, `Database`, `NetworkZone`, `Application`).
+    *   You can load your application architecture from a YAML file using the `load_architecture_from_yaml(file_path)` function.
+*   **`threat_model.py`**: Defines classes for threat modeling concepts (`ThreatActor`, `AttackVector`, `Vulnerability`, `SecurityControl`, `IdentifiedAttackSurface`, `SuggestedControl`).
+    *   `identify_attack_surfaces(application, known_vulnerabilities)`: Analyzes an `Application` object and a list of `Vulnerability` objects to find potential attack surfaces.
+    *   `suggest_security_controls(attack_surfaces, available_controls)`: Suggests `SecurityControl`s for identified attack surfaces based on their vulnerabilities.
+
+**Example YAML Files:**
+
+*   **`example_architecture.yaml`**: Shows an example of how to define your application's services, databases, and network zones in YAML. This file can be loaded by `load_architecture_from_yaml`.
+*   **`example_security_knowledge_base.yaml`**: Provides a sample structure for defining threat actors, attack vectors, vulnerabilities, and security controls. Currently, this file is for demonstration purposes, and you would typically instantiate these objects directly in your Python script or develop a loader for this YAML.
+
+**Example Usage (Conceptual):**
+
+```python
+# main_analyzer.py (Illustrative)
+from architecture import load_architecture_from_yaml, Application
+from threat_model import (
+    ThreatActor, AttackVector, Vulnerability, SecurityControl,
+    identify_attack_surfaces, suggest_security_controls,
+    IdentifiedAttackSurface # For type hinting if needed
+)
+
+# 1. Load application architecture
+app_arch: Application = load_architecture_from_yaml("example_architecture.yaml")
+
+# 2. Define or load known vulnerabilities and available controls
+#    (For this example, we'll define them directly.
+#     In a real scenario, you might load these from example_security_knowledge_base.yaml
+#     or another data source)
+
+# Define Attack Vectors
+sql_injection_av = AttackVector(name="SQL Injection", description="...", target_components=["Database", "Service"])
+xss_av = AttackVector(name="Cross-Site Scripting", description="...", target_components=["Service"])
+unpatched_av = AttackVector(name="Unpatched Software", description="...", target_components=["Service", "Database"])
+
+# Define Vulnerabilities
+vuln1 = Vulnerability(name="CVE-2023-1234", description="SQLi in login", attack_vector=sql_injection_av, affected_components=["user_management_api"], severity="High")
+vuln2 = Vulnerability(name="Generic Unpatched Lib", description="Old library in use", attack_vector=unpatched_av, affected_components=[], severity="Medium") # General vulnerability
+vuln3 = Vulnerability(name="XSS in comments", description="XSS in comment field", attack_vector=xss_av, affected_components=["frontend_web_server"], severity="Low")
+
+known_vulnerabilities = [vuln1, vuln2, vuln3]
+
+# Define Security Controls
+input_val_ctrl = SecurityControl(name="Input Validation", description="...", mitigates=[sql_injection_av, xss_av], cost_to_implement="Medium", effectiveness="High")
+patching_ctrl = SecurityControl(name="Regular Patching", description="...", mitigates=[unpatched_av], cost_to_implement="Medium", effectiveness="High")
+waf_ctrl = SecurityControl(name="WAF", description="...", mitigates=[sql_injection_av, xss_av], cost_to_implement="High", effectiveness="Medium")
+
+available_controls = [input_val_ctrl, patching_ctrl, waf_ctrl]
+
+# 3. Identify attack surfaces
+surfaces: List[IdentifiedAttackSurface] = identify_attack_surfaces(app_arch, known_vulnerabilities)
+print("\\n--- Identified Attack Surfaces ---")
+for surface in surfaces:
+    print(f"Surface: {surface.component_name} ({surface.component_type}) in {surface.network_zone}")
+    print(f"  Reason: {surface.reason}")
+    if surface.potential_vulnerabilities:
+        print("  Potential Vulnerabilities:")
+        for vuln in surface.potential_vulnerabilities:
+            print(f"    - {vuln.name} (Severity: {vuln.severity}, Vector: {vuln.attack_vector.name})")
+
+# 4. Suggest security controls
+print("\\n--- Suggested Security Controls ---")
+suggestions = suggest_security_controls(surfaces, available_controls)
+for suggestion in suggestions:
+    print(f"Control: {suggestion.control.name} for {suggestion.applies_to_surface.component_name}")
+    print(f"  Reason: {suggestion.reason_for_suggestion}")
+    print(f"  Effectiveness: {suggestion.control.effectiveness}, Cost: {suggestion.control.cost_to_implement}")
+
+```
 
 ## Contributing
 
