@@ -24,6 +24,7 @@
 - [Context](#context)
 - [Fun \& Experimental](#fun--experimental)
 - [Start from Scratch](#start-from-scratch)
+- [Threat Modeling Integration](#threat-modeling-integration)
 - [Contributing](#contributing)
 
 ---
@@ -209,7 +210,81 @@
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
 
+## Threat Modeling Integration
 
+This project now includes a basic framework for performing threat modeling on application architectures.
+
+**Core Components:**
+
+*   **`architecture.py`**: Defines classes to represent your application's architecture (`Service`, `Database`, `NetworkZone`, `Application`).
+    *   You can load your application architecture from a YAML file using the `load_architecture_from_yaml(file_path)` function.
+*   **`threat_model.py`**: Defines classes for threat modeling concepts (`ThreatActor`, `AttackVector`, `Vulnerability`, `SecurityControl`, `IdentifiedAttackSurface`, `SuggestedControl`).
+    *   `identify_attack_surfaces(application, known_vulnerabilities)`: Analyzes an `Application` object and a list of `Vulnerability` objects to find potential attack surfaces.
+    *   `suggest_security_controls(attack_surfaces, available_controls)`: Suggests `SecurityControl`s for identified attack surfaces based on their vulnerabilities.
+
+**Example YAML Files:**
+
+*   **`example_architecture.yaml`**: Shows an example of how to define your application's services, databases, and network zones in YAML. This file can be loaded by `load_architecture_from_yaml`.
+*   **`example_security_knowledge_base.yaml`**: Provides an example of how to define your threat actors, attack vectors, vulnerabilities, and security controls in YAML. This file can be loaded by `load_threat_intelligence_from_yaml` and now supports richer attributes for each entity.
+
+**Example Usage (Conceptual):**
+
+```python
+# main_analyzer.py (Illustrative)
+from typing import List # For type hinting
+from architecture import load_architecture_from_yaml, Application
+from threat_model import (
+    load_threat_intelligence_from_yaml, # New loader
+    identify_attack_surfaces, suggest_security_controls,
+    IdentifiedAttackSurface, ThreatActor, AttackVector, Vulnerability, SecurityControl # For type hinting
+)
+
+# 1. Load application architecture
+app_arch: Application = load_architecture_from_yaml("example_architecture.yaml")
+
+# 2. Load threat intelligence data (actors, vectors, vulnerabilities, controls)
+threat_actors: List[ThreatActor]
+attack_vectors: List[AttackVector]
+known_vulnerabilities: List[Vulnerability]
+available_controls: List[SecurityControl]
+
+threat_actors, attack_vectors, known_vulnerabilities, available_controls = \
+    load_threat_intelligence_from_yaml("example_security_knowledge_base.yaml")
+
+print(f"Loaded {len(threat_actors)} threat actors, {len(attack_vectors)} attack vectors, "
+      f"{len(known_vulnerabilities)} vulnerabilities, and {len(available_controls)} security controls.")
+
+# 3. Identify attack surfaces
+surfaces: List[IdentifiedAttackSurface] = identify_attack_surfaces(app_arch, known_vulnerabilities)
+print("\\n--- Identified Attack Surfaces ---")
+for surface in surfaces:
+    print(f"Surface: {surface.component_name} ({surface.component_type}) in {surface.network_zone}")
+    print(f"  Reason: {surface.reason}")
+    if surface.potential_vulnerabilities:
+        print("  Potential Vulnerabilities:")
+        for vuln in surface.potential_vulnerabilities:
+            cvss_info = f", CVSS: {vuln.cvss_score}" if vuln.cvss_score is not None else ""
+            cve_info = f", CVE: {vuln.cve_id}" if vuln.cve_id else ""
+            print(f"    - {vuln.name} (Severity: {vuln.severity}{cvss_info}{cve_info})")
+            print(f"      Attack Vector: {vuln.attack_vector.name} (CWE: {vuln.attack_vector.cwe_id if vuln.attack_vector.cwe_id else 'N/A'})")
+            print(f"      Impact: {vuln.impact_description}")
+            print(f"      Exploitability: {vuln.exploitability}")
+
+
+# 4. Suggest security controls
+print("\\n--- Suggested Security Controls ---")
+suggestions = suggest_security_controls(surfaces, available_controls)
+for suggestion in suggestions:
+    print(f"Control: {suggestion.control.name} for {suggestion.applies_to_surface.component_name}")
+    print(f"  Description: {suggestion.control.description}")
+    print(f"  Reason: {suggestion.reason_for_suggestion}") # This is now very detailed
+    print(f"  Status: {suggestion.control.implementation_status}, Owner: {suggestion.control.owner}")
+    print(f"  Effectiveness: {suggestion.control.effectiveness}, Cost: {suggestion.control.cost_to_implement}")
+    print(f"  Residual Risk: {suggestion.control.residual_risk}")
+    if suggestion.control.related_vulnerabilities:
+        print(f"  Specifically addresses: {', '.join(suggestion.control.related_vulnerabilities)}")
+
+```
 
 ## Contributing
 
