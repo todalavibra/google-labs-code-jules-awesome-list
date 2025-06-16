@@ -225,45 +225,34 @@ This project now includes a basic framework for performing threat modeling on ap
 **Example YAML Files:**
 
 *   **`example_architecture.yaml`**: Shows an example of how to define your application's services, databases, and network zones in YAML. This file can be loaded by `load_architecture_from_yaml`.
-*   **`example_security_knowledge_base.yaml`**: Provides a sample structure for defining threat actors, attack vectors, vulnerabilities, and security controls. Currently, this file is for demonstration purposes, and you would typically instantiate these objects directly in your Python script or develop a loader for this YAML.
+*   **`example_security_knowledge_base.yaml`**: Provides an example of how to define your threat actors, attack vectors, vulnerabilities, and security controls in YAML. This file can be loaded by `load_threat_intelligence_from_yaml` and now supports richer attributes for each entity.
 
 **Example Usage (Conceptual):**
 
 ```python
 # main_analyzer.py (Illustrative)
+from typing import List # For type hinting
 from architecture import load_architecture_from_yaml, Application
 from threat_model import (
-    ThreatActor, AttackVector, Vulnerability, SecurityControl,
+    load_threat_intelligence_from_yaml, # New loader
     identify_attack_surfaces, suggest_security_controls,
-    IdentifiedAttackSurface # For type hinting if needed
+    IdentifiedAttackSurface, ThreatActor, AttackVector, Vulnerability, SecurityControl # For type hinting
 )
 
 # 1. Load application architecture
 app_arch: Application = load_architecture_from_yaml("example_architecture.yaml")
 
-# 2. Define or load known vulnerabilities and available controls
-#    (For this example, we'll define them directly.
-#     In a real scenario, you might load these from example_security_knowledge_base.yaml
-#     or another data source)
+# 2. Load threat intelligence data (actors, vectors, vulnerabilities, controls)
+threat_actors: List[ThreatActor]
+attack_vectors: List[AttackVector]
+known_vulnerabilities: List[Vulnerability]
+available_controls: List[SecurityControl]
 
-# Define Attack Vectors
-sql_injection_av = AttackVector(name="SQL Injection", description="...", target_components=["Database", "Service"])
-xss_av = AttackVector(name="Cross-Site Scripting", description="...", target_components=["Service"])
-unpatched_av = AttackVector(name="Unpatched Software", description="...", target_components=["Service", "Database"])
+threat_actors, attack_vectors, known_vulnerabilities, available_controls = \
+    load_threat_intelligence_from_yaml("example_security_knowledge_base.yaml")
 
-# Define Vulnerabilities
-vuln1 = Vulnerability(name="CVE-2023-1234", description="SQLi in login", attack_vector=sql_injection_av, affected_components=["user_management_api"], severity="High")
-vuln2 = Vulnerability(name="Generic Unpatched Lib", description="Old library in use", attack_vector=unpatched_av, affected_components=[], severity="Medium") # General vulnerability
-vuln3 = Vulnerability(name="XSS in comments", description="XSS in comment field", attack_vector=xss_av, affected_components=["frontend_web_server"], severity="Low")
-
-known_vulnerabilities = [vuln1, vuln2, vuln3]
-
-# Define Security Controls
-input_val_ctrl = SecurityControl(name="Input Validation", description="...", mitigates=[sql_injection_av, xss_av], cost_to_implement="Medium", effectiveness="High")
-patching_ctrl = SecurityControl(name="Regular Patching", description="...", mitigates=[unpatched_av], cost_to_implement="Medium", effectiveness="High")
-waf_ctrl = SecurityControl(name="WAF", description="...", mitigates=[sql_injection_av, xss_av], cost_to_implement="High", effectiveness="Medium")
-
-available_controls = [input_val_ctrl, patching_ctrl, waf_ctrl]
+print(f"Loaded {len(threat_actors)} threat actors, {len(attack_vectors)} attack vectors, "
+      f"{len(known_vulnerabilities)} vulnerabilities, and {len(available_controls)} security controls.")
 
 # 3. Identify attack surfaces
 surfaces: List[IdentifiedAttackSurface] = identify_attack_surfaces(app_arch, known_vulnerabilities)
@@ -274,15 +263,26 @@ for surface in surfaces:
     if surface.potential_vulnerabilities:
         print("  Potential Vulnerabilities:")
         for vuln in surface.potential_vulnerabilities:
-            print(f"    - {vuln.name} (Severity: {vuln.severity}, Vector: {vuln.attack_vector.name})")
+            cvss_info = f", CVSS: {vuln.cvss_score}" if vuln.cvss_score is not None else ""
+            cve_info = f", CVE: {vuln.cve_id}" if vuln.cve_id else ""
+            print(f"    - {vuln.name} (Severity: {vuln.severity}{cvss_info}{cve_info})")
+            print(f"      Attack Vector: {vuln.attack_vector.name} (CWE: {vuln.attack_vector.cwe_id if vuln.attack_vector.cwe_id else 'N/A'})")
+            print(f"      Impact: {vuln.impact_description}")
+            print(f"      Exploitability: {vuln.exploitability}")
+
 
 # 4. Suggest security controls
 print("\\n--- Suggested Security Controls ---")
 suggestions = suggest_security_controls(surfaces, available_controls)
 for suggestion in suggestions:
     print(f"Control: {suggestion.control.name} for {suggestion.applies_to_surface.component_name}")
-    print(f"  Reason: {suggestion.reason_for_suggestion}")
+    print(f"  Description: {suggestion.control.description}")
+    print(f"  Reason: {suggestion.reason_for_suggestion}") # This is now very detailed
+    print(f"  Status: {suggestion.control.implementation_status}, Owner: {suggestion.control.owner}")
     print(f"  Effectiveness: {suggestion.control.effectiveness}, Cost: {suggestion.control.cost_to_implement}")
+    print(f"  Residual Risk: {suggestion.control.residual_risk}")
+    if suggestion.control.related_vulnerabilities:
+        print(f"  Specifically addresses: {', '.join(suggestion.control.related_vulnerabilities)}")
 
 ```
 

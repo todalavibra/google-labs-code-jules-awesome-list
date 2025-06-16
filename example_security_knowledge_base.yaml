@@ -1,65 +1,126 @@
 threat_actors:
   - name: "Script Kiddie"
     skill_level: "Low"
-    motivation: "Curiosity, Vandalism"
-  - name: "Organized Crime Syndicate"
+    motivation: "Curiosity, Vandalism, Notoriety"
+    resources: "Basic tools available online, limited knowledge, public exploits"
+    likely_targets: ["Public-facing websites with common vulnerabilities", "Unsecured services", "Default credentials"]
+    attack_history: ["Website defacement", "Simple DoS attacks", "Exploiting known unpatched vulnerabilities"]
+  - name: "Organized Crime Group"
     skill_level: "High"
     motivation: "Financial Gain"
+    resources: "Significant funding, skilled operatives, custom malware, zero-day exploits, botnets"
+    likely_targets: ["Financial institutions", "E-commerce platforms", "Databases with PII/payment info", "Healthcare systems"]
+    attack_history: ["Ransomware attacks", "Large-scale phishing campaigns", "APT-style intrusions for data theft"]
+  - name: "Insider Threat - Malicious"
+    skill_level: "Medium to High (depends on role)"
+    motivation: "Revenge, Financial Gain, Espionage"
+    resources: "Legitimate access to internal systems, knowledge of internal security measures"
+    likely_targets: ["Sensitive internal data", "Intellectual property", "Critical internal systems"]
+    # attack_history: (Often specific to the incident, not generalizable)
 
 attack_vectors:
   - name: "SQL Injection (SQLi)"
-    description: "Injecting malicious SQL queries into input fields to manipulate backend databases."
-    target_components: ["Database", "Service"] # Targets services that build SQL queries, and databases themselves
+    description: "Injecting malicious SQL queries into input fields to manipulate database operations."
+    target_components: ["Database", "Service", "API", "Backend Systems"]
+    cwe_id: "CWE-89"
+    ease_of_exploitation: "Medium (many tools available)"
+    required_privileges: "None (if input field is accessible to unauthenticated users)"
+    mitigation_complexity: "Low to Medium (requires secure coding practices, ORM usage)"
   - name: "Cross-Site Scripting (XSS)"
     description: "Injecting malicious scripts into web pages viewed by other users."
-    target_components: ["Service"] # Typically targets web services/applications
-  - name: "Unpatched Software Exploitation"
-    description: "Exploiting known vulnerabilities in outdated software components."
-    target_components: ["Service", "Database", "Operating System"]
-  - name: "Phishing"
-    description: "Deceiving users into revealing sensitive information or installing malware."
-    target_components: ["User"] # Primarily targets users, but can affect services/databases indirectly
+    target_components: ["Service", "Web Browser", "Frontend Application"]
+    cwe_id: "CWE-79"
+    ease_of_exploitation: "Medium (depends on context - reflected, stored, DOM)"
+    required_privileges: "None (ability to input data or trick user interaction)"
+    mitigation_complexity: "Medium (requires context-aware output encoding, CSP)"
+  - name: "Exploitation of Unpatched Software"
+    description: "Leveraging known vulnerabilities in software that has not been updated with security patches."
+    target_components: ["Service", "Database", "Operating System", "Libraries", "Frameworks"]
+    cwe_id: "CWE-1035" # Example, can be more specific like CWE-20 for improper input validation leading to vuln
+    ease_of_exploitation: "Varies (from easy with public exploit to hard for complex vulns)"
+    required_privileges: "Varies (often None or User level)"
+    mitigation_complexity: "Low to Medium (patch management processes)"
+  - name: "Authentication Bypass"
+    description: "Gaining unauthorized access by circumventing authentication mechanisms."
+    target_components: ["Service", "API", "Application Logic"]
+    cwe_id: "CWE-287"
+    ease_of_exploitation: "Medium to High"
+    required_privileges: "None"
+    mitigation_complexity: "Medium (secure authentication design, MFA)"
 
 vulnerabilities:
-  - name: "CVE-2023-0001 (SQLi in Login)"
-    description: "SQL Injection vulnerability in the login form of user_management_api allows authentication bypass."
-    attack_vector: "SQL Injection (SQLi)" # Name of the attack vector
-    affected_components: ["user_management_api"] # Specific component name
+  - name: "SQLi in User Login Form"
+    description: "User login form is vulnerable to SQL injection via the username and password parameters, allowing authentication bypass."
+    attack_vector: "SQL Injection (SQLi)"
+    affected_components: ["AuthenticationService", "UserDatabase"]
     severity: "High"
-  - name: "Log4Shell (CVE-2021-44228)"
-    description: "Remote code execution vulnerability in Apache Log4j library."
-    attack_vector: "Unpatched Software Exploitation" # Name of the attack vector
-    affected_components: [] # General vulnerability, could affect many components if they use Log4j
-    severity: "Critical"
-  - name: "XSS in Search Results"
-    description: "Cross-site scripting vulnerability in the search results page of frontend_web_server."
-    attack_vector: "Cross-Site Scripting (XSS)" # Name of the attack vector
-    affected_components: ["frontend_web_server"]
+    cve_id: "CVE-2024-1001"
+    cvss_score: 8.8
+    exploitability: "Easily exploitable with common SQLi tools. Proof of concept available."
+    impact_description: "Unauthorized access to user accounts, potential data breach of all user credentials and PII."
+  - name: "Stored XSS in User Profile Page"
+    description: "User profile fields (e.g., 'About Me') are not properly sanitized, allowing for stored XSS when other users view the profile."
+    attack_vector: "Cross-Site Scripting (XSS)"
+    affected_components: ["WebApp Frontend", "UserProfileService"]
     severity: "Medium"
+    cve_id: "CVE-2024-1002"
+    cvss_score: 6.1
+    exploitability: "Requires user interaction (another user viewing the malicious profile). Attacker can craft payload easily."
+    impact_description: "Session hijacking of users viewing the profile, defacement, redirection to malicious sites."
+  - name: "Outdated Web Server Software (Apache Struts)"
+    description: "The public-facing web server is running an outdated version of Apache Struts with known RCE vulnerabilities."
+    attack_vector: "Exploitation of Unpatched Software"
+    affected_components: ["frontend_web_server"] # From example_architecture.yaml
+    severity: "Critical"
+    cve_id: "CVE-2017-5638" # Example of a well-known Struts vuln
+    cvss_score: 10.0
+    exploitability: "Public exploits widely available. Automated tools can find and exploit this."
+    impact_description: "Full remote code execution on the web server, leading to complete system compromise."
+  - name: "Weak Password Policy for Admin Accounts"
+    description: "Admin accounts do not enforce strong password complexity or rotation, making them susceptible to brute-force or guessing."
+    attack_vector: "Authentication Bypass" # Could also be a custom "Weak Credentials" AV
+    affected_components: ["UserManagementAPI", "AdminDashboardService"]
+    severity: "High"
+    # cve_id: (N/A for policy issues usually)
+    # cvss_score: (Can be calculated based on context, e.g. ~7.5)
+    exploitability: "Moderate, depends on password strength and lockout mechanisms."
+    impact_description: "Unauthorized administrative access, full control over application and data."
+
 
 security_controls:
-  - name: "Input Validation and Sanitization"
-    description: "Validating and sanitizing all user-supplied input to prevent injection attacks."
-    mitigates: ["SQL Injection (SQLi)", "Cross-Site Scripting (XSS)"] # Names of attack vectors
-    cost_to_implement: "Medium"
-    effectiveness: "High"
-  - name: "Parameterized Queries (Prepared Statements)"
-    description: "Using parameterized queries to prevent SQL injection by treating input as data, not executable code."
+  - name: "Use Parameterized Queries (ORM/Prepared Statements)"
+    description: "Utilize ORMs or prepared statements to prevent SQL injection vulnerabilities by treating user input as data, not code."
     mitigates: ["SQL Injection (SQLi)"]
-    cost_to_implement: "Low" # If ORM/framework supports it well
+    cost_to_implement: "Low (for new code development with modern frameworks)"
     effectiveness: "High"
-  - name: "Regular Software Patching and Updates"
-    description: "Keeping all software components, libraries, and operating systems up-to-date."
-    mitigates: ["Unpatched Software Exploitation"]
+    implementation_status: "Implemented"
+    owner: "Development Team Leads"
+    related_vulnerabilities: ["SQLi in User Login Form"]
+    residual_risk: "Low (if consistently applied)"
+  - name: "Content Security Policy (CSP) and Output Encoding"
+    description: "Implement a strong Content Security Policy. Apply context-aware output encoding for all user-supplied data."
+    mitigates: ["Cross-Site Scripting (XSS)"]
     cost_to_implement: "Medium"
+    effectiveness: "High (when comprehensively implemented)"
+    implementation_status: "Planned"
+    owner: "Frontend Development Team"
+    related_vulnerabilities: ["Stored XSS in User Profile Page"]
+    residual_risk: "Medium (until fully deployed and verified)"
+  - name: "Vulnerability Management and Patching Program"
+    description: "Regularly scan for vulnerabilities and apply security patches to all software components within a defined SLA."
+    mitigates: ["Exploitation of Unpatched Software"]
+    cost_to_implement: "Medium (requires tools and processes)"
     effectiveness: "High"
-  - name: "Web Application Firewall (WAF)"
-    description: "A firewall that filters, monitors, and blocks malicious HTTP/S traffic to and from a web application."
-    mitigates: ["SQL Injection (SQLi)", "Cross-Site Scripting (XSS)"]
-    cost_to_implement: "Medium"
-    effectiveness: "Medium" # Can be bypassed, effectiveness depends on ruleset
-  - name: "Security Awareness Training"
-    description: "Training users to recognize and respond to phishing attempts and other social engineering tactics."
-    mitigates: ["Phishing"]
-    cost_to_implement: "Low"
-    effectiveness: "Medium"
+    implementation_status: "Partially Implemented"
+    owner: "IT Operations / Security Team"
+    related_vulnerabilities: ["Outdated Web Server Software (Apache Struts)"] # Can list specific critical vulns it addresses
+    residual_risk: "Medium (depends on scan frequency and patching speed)"
+  - name: "Multi-Factor Authentication (MFA) for Admin Users"
+    description: "Enforce MFA for all administrative accounts to provide an additional layer of security beyond passwords."
+    mitigates: ["Authentication Bypass"] # Assuming AV 'Authentication Bypass' covers credential attacks
+    cost_to_implement: "Low to Medium (depending on solution)"
+    effectiveness: "High (against credential compromise)"
+    implementation_status: "Not Implemented"
+    owner: "Identity and Access Management Team"
+    # related_vulnerabilities: ["Weak Password Policy for Admin Accounts"] # Could link to policy weakness if defined as vuln
+    residual_risk: "High (for admin access until implemented)"
