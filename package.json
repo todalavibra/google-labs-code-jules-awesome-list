@@ -1,22 +1,23 @@
 {
-  "name": "jules-prompt-crafting-platform",
-  "version": "2.0.0",
-  "description": "Advanced prompt crafting and management platform for Jules AI",
+  "name": "jules-coding-improvement-platform",
+  "version": "3.0.0",
+  "description": "Advanced platform for improving Jules AI coding accuracy and stability",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "validate": "node scripts/validate-prompts.js",
-    "search": "node scripts/search-prompts.js",
-    "stats": "node scripts/generate-stats.js",
-    "export": "node scripts/export-prompts.js",
-    "import": "node scripts/import-prompts.js",
-    "test-prompts": "node scripts/test-prompts.js",
-    "optimize": "node scripts/optimize-prompts.js"
+    "test-jules": "node scripts/test-jules-responses.js",
+    "optimize-prompts": "node scripts/optimize-for-jules.js",
+    "analyze-errors": "node scripts/analyze-coding-errors.js",
+    "generate-templates": "node scripts/generate-coding-templates.js",
+    "quality-check": "node scripts/quality-assurance.js",
+    "benchmark": "node scripts/benchmark-jules.js",
+    "export-improvements": "node scripts/export-improvements.js"
   },
-  "keywords": ["jules", "prompts", "ai", "coding", "google-labs", "crafting", "optimization"],
-  "author": "Community",
+  "keywords": ["jules", "ai", "coding", "improvement", "quality", "stability", "prompts"],
+  "author": "Jules Improvement Team",
   "license": "MIT",
   "devDependencies": {
     "vite": "^5.0.0",
@@ -24,13 +25,20 @@
     "fuse.js": "^7.0.0",
     "monaco-editor": "^0.44.0",
     "chart.js": "^4.4.0",
-    "date-fns": "^2.30.0"
+    "date-fns": "^2.30.0",
+    "prismjs": "^1.29.0",
+    "diff": "^5.1.0"
   },
   "dependencies": {
     "commander": "^11.0.0",
     "chalk": "^5.3.0",
     "inquirer": "^9.2.0",
     "natural": "^6.12.0",
-    "sentiment": "^5.0.2"
+    "sentiment": "^5.0.2",
+    "axios": "^1.6.0",
+    "lodash": "^4.17.21",
+    "js-beautify": "^1.14.0",
+    "eslint": "^8.55.0",
+    "typescript": "^5.3.0"
   }
 }
