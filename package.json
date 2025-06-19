@@ -1,7 +1,7 @@
 {
-  "name": "awesome-jules-prompts",
-  "version": "1.0.0",
-  "description": "Curated prompts for Jules, an async coding agent from Google Labs",
+  "name": "jules-prompt-crafting-platform",
+  "version": "2.0.0",
+  "description": "Advanced prompt crafting and management platform for Jules AI",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
@@ -9,18 +9,28 @@
     "preview": "vite preview",
     "validate": "node scripts/validate-prompts.js",
     "search": "node scripts/search-prompts.js",
-    "stats": "node scripts/generate-stats.js"
+    "stats": "node scripts/generate-stats.js",
+    "export": "node scripts/export-prompts.js",
+    "import": "node scripts/import-prompts.js",
+    "test-prompts": "node scripts/test-prompts.js",
+    "optimize": "node scripts/optimize-prompts.js"
   },
-  "keywords": ["jules", "prompts", "ai", "coding", "google-labs"],
+  "keywords": ["jules", "prompts", "ai", "coding", "google-labs", "crafting", "optimization"],
   "author": "Community",
   "license": "MIT",
   "devDependencies": {
     "vite": "^5.0.0",
     "marked": "^12.0.0",
-    "fuse.js": "^7.0.0"
+    "fuse.js": "^7.0.0",
+    "monaco-editor": "^0.44.0",
+    "chart.js": "^4.4.0",
+    "date-fns": "^2.30.0"
   },
   "dependencies": {
     "commander": "^11.0.0",
-    "chalk": "^5.3.0"
+    "chalk": "^5.3.0",
+    "inquirer": "^9.2.0",
+    "natural": "^6.12.0",
+    "sentiment": "^5.0.2"
   }
 }
