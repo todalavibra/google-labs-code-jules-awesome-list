@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Costos de Bioplásticos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Ahorro/Costo de Bioplásticos</h1>
+        <p>Estime la diferencia de costos mensual y anual al cambiar a bioplásticos.</p>
+
+        <div class="calculator">
+            <div class="input-group">
+                <label for="unitsPerMonth">Número de unidades por mes:</label>
+                <input type="number" id="unitsPerMonth" placeholder="Ej: 10000">
+            </div>
+
+            <div class="input-group">
+                <label for="currentCostPerUnit">Costo actual por unidad plástica (ARS):</label>
+                <input type="number" id="currentCostPerUnit" placeholder="Ej: 5.50">
+            </div>
+
+            <div class="input-group">
+                <label for="bioplasticCostPerUnit">Costo por unidad de bioplástico (ARS):</label>
+                <input type="number" id="bioplasticCostPerUnit" placeholder="Ej: 6.20">
+            </div>
+
+            <button id="calculateBtn">Calcular Impacto</button>
+
+            <div id="results" class="results-area" style="display: none;">
+                <h2>Resultados Estimados:</h2>
+                <p>Costo mensual actual (plástico): <span id="currentMonthlyCost"></span> ARS</p>
+                <p>Costo mensual estimado (bioplástico): <span id="bioplasticMonthlyCost"></span> ARS</p>
+                <p>Diferencia de costo mensual: <span id="monthlyDifference"></span> ARS</p>
+                <p class="impact-summary">Impacto anual estimado: <span id="annualImpact"></span> ARS</p>
+                <p id="savingsOrCostMessage"></p>
+            </div>
+            <div id="errorMessages" class="error-area" style="display: none; color: red;">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

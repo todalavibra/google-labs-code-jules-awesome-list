@@ -1,0 +1,138 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+p {
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.calculator {
+    text-align: left;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #34495e;
+    font-size: 0.9em;
+}
+
+.input-group input[type="number"] {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input[type="number"]:focus {
+    border-color: #5cb85c;
+    outline: none;
+}
+
+button#calculateBtn {
+    background-color: #5cb85c;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+button#calculateBtn:hover {
+    background-color: #4cae4c;
+}
+
+.results-area {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #e9f5e9;
+    border-left: 5px solid #5cb85c;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.results-area h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+.results-area p {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+.results-area span {
+    font-weight: bold;
+}
+
+.impact-summary span {
+    font-size: 1.1em;
+    color: #4cae4c; /* Default to green for savings */
+}
+
+/* Style for when it's an increased cost */
+.impact-summary.increased-cost span {
+    color: #d9534f; /* Red for increased cost */
+}
+
+#savingsOrCostMessage {
+    font-weight: bold;
+    font-size: 1.05em;
+    margin-top: 10px;
+}
+
+.error-area {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fddddd;
+    border-left: 5px solid #d9534f;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 0.9em;
+}
+.error-area p {
+    margin: 5px 0;
+    color: #d9534f;
+}
